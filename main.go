@@ -131,7 +131,9 @@ func install() error {
 
 	settings["statusLine"] = map[string]interface{}{
 		"type":    "command",
-		"command": binaryPath,
+		// Forward slashes: Claude Code runs the command through Git Bash on
+		// Windows, which eats unescaped backslashes and fails silently.
+		"command": filepath.ToSlash(binaryPath),
 	}
 
 	_ = os.MkdirAll(filepath.Dir(settingsPath), 0o755)
