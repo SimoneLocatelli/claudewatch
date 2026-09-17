@@ -219,7 +219,7 @@ func update() error {
 
 	// Fetch and install latest.
 	fmt.Printf("Fetching latest version...\n")
-	cmd := exec.Command("go", "install", "github.com/SimoneLocatelli/claudewatch@v0.4.0")
+	cmd := exec.Command("go", "install", "github.com/SimoneLocatelli/claudewatch@v0.4.1")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {

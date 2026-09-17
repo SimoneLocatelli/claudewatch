@@ -22,7 +22,7 @@ A beautiful, themed status line for Claude Code with real-time usage tracking.
 ### With Go
 
 ```bash
-go install github.com/SimoneLocatelli/claudewatch@v0.4.0
+go install github.com/SimoneLocatelli/claudewatch@v0.4.1
 claudewatch install
 ```
 

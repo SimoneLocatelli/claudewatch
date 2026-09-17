@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.1 (2026-09-17)
+
+- Fix: `claudewatch install` now writes the `statusLine` command path with forward slashes. On Windows, Claude Code runs the command through Git Bash, which stripped the backslashes and the status line never appeared.
+- Bump pinned install target to `v0.4.1` (`go install`, `update` command, setup skill)
+
 ## v0.4.0
 
 - `update` command — fetch latest version and re-register (`claudewatch update`)

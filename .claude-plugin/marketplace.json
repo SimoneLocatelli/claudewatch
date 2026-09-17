@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Beautiful themed status line for Claude Code with real-time usage tracking, progress bars, and 10 built-in themes",
-    "version": "0.4.0"
+    "version": "0.4.1"
   },
   "plugins": [
     {
