@@ -10,11 +10,11 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/nitintf/claudewatch/internal/api"
-	"github.com/nitintf/claudewatch/internal/auth"
-	"github.com/nitintf/claudewatch/internal/config"
-	"github.com/nitintf/claudewatch/internal/statusline"
-	"github.com/nitintf/claudewatch/internal/theme"
+	"github.com/SimoneLocatelli/claudewatch/internal/api"
+	"github.com/SimoneLocatelli/claudewatch/internal/auth"
+	"github.com/SimoneLocatelli/claudewatch/internal/config"
+	"github.com/SimoneLocatelli/claudewatch/internal/statusline"
+	"github.com/SimoneLocatelli/claudewatch/internal/theme"
 )
 
 func main() {
@@ -117,7 +117,16 @@ func install() error {
 	settings := make(map[string]interface{})
 	data, err := os.ReadFile(settingsPath)
 	if err == nil {
-		_ = json.Unmarshal(data, &settings)
+		// Refuse to continue on a parse error: silently proceeding would
+		// overwrite the whole file with only the statusLine key.
+		if err := json.Unmarshal(data, &settings); err != nil {
+			return fmt.Errorf("parsing %s: %w (fix the file, then retry)", settingsPath, err)
+		}
+		if err := backupSettings(settingsPath, data); err != nil {
+			return err
+		}
+	} else if !os.IsNotExist(err) {
+		return fmt.Errorf("reading %s: %w", settingsPath, err)
 	}
 
 	settings["statusLine"] = map[string]interface{}{
@@ -167,6 +176,7 @@ func uninstall() error {
 			delete(settings, "statusLine")
 			out, err := json.MarshalIndent(settings, "", "  ")
 			if err == nil {
+				_ = backupSettings(settingsPath, data)
 				_ = os.WriteFile(settingsPath, out, 0o644)
 			}
 		}
@@ -191,6 +201,15 @@ func uninstall() error {
 	return nil
 }
 
+// backupSettings copies the current settings.json to settings.json.bak
+// before it is rewritten, so a bad write can be reverted by hand.
+func backupSettings(path string, data []byte) error {
+	if err := os.WriteFile(path+".bak", data, 0o600); err != nil {
+		return fmt.Errorf("backing up %s: %w", path, err)
+	}
+	return nil
+}
+
 func update() error {
 	// Show current version.
 	currentVersion := version()
@@ -198,7 +217,7 @@ func update() error {
 
 	// Fetch and install latest.
 	fmt.Printf("Fetching latest version...\n")
-	cmd := exec.Command("go", "install", "github.com/nitintf/claudewatch@latest")
+	cmd := exec.Command("go", "install", "github.com/SimoneLocatelli/claudewatch@v0.4.0")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {

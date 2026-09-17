@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nitintf/claudewatch/internal/api"
-	"github.com/nitintf/claudewatch/internal/config"
-	"github.com/nitintf/claudewatch/internal/theme"
+	"github.com/SimoneLocatelli/claudewatch/internal/api"
+	"github.com/SimoneLocatelli/claudewatch/internal/config"
+	"github.com/SimoneLocatelli/claudewatch/internal/theme"
 )
 
 // ClaudeStatus represents the JSON piped from Claude Code.

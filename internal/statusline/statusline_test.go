@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nitintf/claudewatch/internal/api"
-	"github.com/nitintf/claudewatch/internal/config"
-	"github.com/nitintf/claudewatch/internal/theme"
+	"github.com/SimoneLocatelli/claudewatch/internal/api"
+	"github.com/SimoneLocatelli/claudewatch/internal/config"
+	"github.com/SimoneLocatelli/claudewatch/internal/theme"
 )
 
 func ptrFloat(f float64) *float64 { return &f }

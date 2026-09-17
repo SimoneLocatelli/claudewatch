@@ -22,14 +22,14 @@ A beautiful, themed status line for Claude Code with real-time usage tracking.
 ### With Go
 
 ```bash
-go install github.com/nitintf/claudewatch@latest
+go install github.com/SimoneLocatelli/claudewatch@v0.4.0
 claudewatch install
 ```
 
 ### Pre-built binary (macOS Apple Silicon)
 
 ```bash
-curl -L https://github.com/nitintf/claudewatch/releases/latest/download/claudewatch-darwin-arm64 -o /usr/local/bin/claudewatch
+curl -L https://github.com/SimoneLocatelli/claudewatch/releases/latest/download/claudewatch-darwin-arm64 -o /usr/local/bin/claudewatch
 chmod +x /usr/local/bin/claudewatch
 claudewatch install
 ```
@@ -37,13 +37,13 @@ claudewatch install
 ### As a Claude Code plugin
 
 ```bash
-claude plugin add github.com/nitintf/claudewatch
+claude plugin add github.com/SimoneLocatelli/claudewatch
 ```
 
 Or via the marketplace:
 
 ```bash
-/plugin marketplace add nitintf/claudewatch
+/plugin marketplace add SimoneLocatelli/claudewatch
 /plugin install claudewatch@claudewatch
 ```
 

@@ -10,7 +10,7 @@ Install claudewatch — a themed status line for Claude Code.
 
 1. **Check Go**: Verify Go is installed (`go version`). If not installed, tell the user to install Go first from https://go.dev/dl/ and stop.
 
-2. **Install binary**: Run `go install github.com/nitintf/claudewatch@latest`
+2. **Install binary**: Run `go install github.com/SimoneLocatelli/claudewatch@v0.4.0`
 
 3. **Register with Claude Code**: Run `claudewatch install` — this also creates the default config file with all keys.
 

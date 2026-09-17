@@ -1,4 +1,4 @@
-module github.com/nitintf/claudewatch
+module github.com/SimoneLocatelli/claudewatch
 
 go 1.24.0
 
